@@ -2,7 +2,6 @@ package vs.producthistory.main;
 
 import vs.products.show.history.ScannedProductHistory;
 import vs.products.show.history.sql.SQLScannedProductHistory;
-import vs.products.iohandler.database.ProductDatabaseHandler;
 import vs.products.iohandler.database.sqlite.ProductSQLiteHandler;
 
 import java.io.FileReader;
@@ -37,7 +36,7 @@ public class MainApplication {
     private static void run(ScannedProductHistory scannedProductHistory) {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Enter a product name: ");
-        scannedProductHistory.showTimeStampSortedScannedProducts(scanner.nextLine());
+        scannedProductHistory.printTimeStampSortedScannedProducts(scanner.nextLine());
     }
 
     private static ScannedProductHistory initializeScannedProductHistory(Properties properties) {
