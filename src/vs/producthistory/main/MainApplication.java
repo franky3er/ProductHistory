@@ -29,6 +29,7 @@ public class MainApplication {
             ScannedProductHistory scannedProductHistory = initializeScannedProductHistory(properties);
             run(scannedProductHistory);
         } catch (IOException e) {
+            System.err.println("ERROR : IO");
             e.printStackTrace();
         }
     }
