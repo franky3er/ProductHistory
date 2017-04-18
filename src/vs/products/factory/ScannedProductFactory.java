@@ -46,17 +46,25 @@ public class ScannedProductFactory {
      * @return ScannedProduct
      */
     public static ScannedProduct build(ResultSet resultSet) {
-        System.out.println("INFO : Create new ScannedProduct out of ResultSet: %s");
+        System.out.println("INFO : Create new ScannedProduct out of ResultSet");
         ScannedProduct scannedProduct = null;
         try {
-            scannedProduct = new ScannedProduct(ProductFactory.build(
-                    resultSet.getString(ProductDatabaseHandler.SCANNEDPRODUCT_TABLE_PK_FK_PRODUCTNAME)));
-            scannedProduct.setTimeStamp(resultSet.getDate(
-                    ProductDatabaseHandler.SCANNEDPRODUCT_TABLE_PK_TIMESTAMP
-            ));
+            String productName = resultSet.getString(ProductDatabaseHandler.SCANNEDPRODUCT_TABLE_PK_FK_PRODUCTNAME);
+            scannedProduct = new ScannedProduct(ProductFactory.build(productName));
+
+            String timeStamp = resultSet.getString(ProductDatabaseHandler.SCANNEDPRODUCT_TABLE_PK_TIMESTAMP);
+            System.out.println(String.format("INFO : set time stamp to '%s'", timeStamp));
+            scannedProduct.setTimeStamp(ScannedProduct.SCANNED_PRODUCT_DATE_FORMAT.parse(timeStamp));
+
+            String ammount = resultSet.getString(ProductDatabaseHandler.SCANNEDPRODUCT_TABLE_AMMOUNT);
+            System.out.println(String.format("INFO : set ammount to '%s'", ammount));
+            scannedProduct.setAmmount(ammount);
         } catch (SQLException e) {
             System.err.println("ERROR : Could not create scanned product from ResultSet");
             e.printStackTrace();
+        } catch (ParseException e) {
+            System.err.println("ERROR : Could not create scanned product from ResultSet - " +
+                    "Parsing date failed");
         }
         return scannedProduct;
     }
