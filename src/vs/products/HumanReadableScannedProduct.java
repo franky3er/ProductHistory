@@ -11,7 +11,10 @@ public class HumanReadableScannedProduct extends ScannedProduct {
     }
 
     public String getHumanReadableProductState() {
-        return String.format("%s\t%s\t%s\t%s",
-                super.getTimeStamp(), super.getName(), super.getAmmount(), super.getUnit());
+        return String.format("%s   %s   %s   %s",
+                ScannedProduct.SCANNED_PRODUCT_DATE_FORMAT.format(super.getTimeStamp()),
+                super.getName(),
+                super.getAmmount(),
+                super.getUnit());
     }
 }

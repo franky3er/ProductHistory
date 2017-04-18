@@ -1,4 +1,4 @@
-package vs.producthistory.historyutils;
+package vs.products.show.history;
 
 import vs.products.ScannedProduct;
 
