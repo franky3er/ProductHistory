@@ -14,13 +14,13 @@ import java.util.List;
  */
 public abstract class ProductDatabaseHandler implements ProductIOHandler{
     public final static String PRODUCT_TABLE = "Product";
-    public final static String PRODUCT_TABLE_PK_PRODUCTNAME = "productName";
-    public final static String PRODUCT_TABLE_PRODUCTUNIT = "productUnit";
+    public final static String PRODUCT_TABLE_PK_PRODUCTNAME = PRODUCT_TABLE + "productName";
+    public final static String PRODUCT_TABLE_PRODUCTUNIT = PRODUCT_TABLE + "productUnit";
 
     public final static String SCANNEDPRODUCT_TABLE = "ScannedProduct";
-    public final static String SCANNEDPRODUCT_TABLE_PK_FK_PRODUCTNAME = PRODUCT_TABLE_PK_PRODUCTNAME;
-    public final static String SCANNEDPRODUCT_TABLE_PK_TIMESTAMP = "timeStamp";
-    public final static String SCANNEDPRODUCT_TABLE_AMMOUNT = "ammount";
+    public final static String SCANNEDPRODUCT_TABLE_PK_FK_PRODUCTNAME = SCANNEDPRODUCT_TABLE + PRODUCT_TABLE_PK_PRODUCTNAME;
+    public final static String SCANNEDPRODUCT_TABLE_PK_TIMESTAMP = SCANNEDPRODUCT_TABLE + "timeStamp";
+    public final static String SCANNEDPRODUCT_TABLE_AMMOUNT = SCANNEDPRODUCT_TABLE + "ammount";
 
     protected String driver = null;
     protected Connection connection = null;
