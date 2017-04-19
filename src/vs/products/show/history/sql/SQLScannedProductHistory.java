@@ -33,7 +33,7 @@ public class SQLScannedProductHistory implements ScannedProductHistory {
     }
 
     @Override
-    public void showTimeStampSortedScannedProducts(String productName) {
+    public void printTimeStampSortedScannedProducts(String productName) {
         List<ScannedProduct> scannedProducts = this.getTimeStampSortedScannedProducts(productName);
         if(scannedProducts.isEmpty()) {
             System.out.println(String.format("Not entries for product name: %s", productName));
